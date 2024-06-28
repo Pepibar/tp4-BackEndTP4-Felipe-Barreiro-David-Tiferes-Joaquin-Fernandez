@@ -1,5 +1,5 @@
 import mysql from "mysql2/promise";
-import artistas from "./artistas";
+
 
  const connection = await mysql.createConnection({
     // Completar con los datos de la conexión a la base de datos
@@ -49,22 +49,19 @@ const createAlbum = async (req, res) => {
             "nombre": "Nombre del album",
             "artista": "Id del artista"
         }
-    */  
-
-    
-            const { nombre, albumesartista } = req.body;
+    */    const { nombre, albumesartista } = req.body;
         
-            try {
-                const [results, fields] = await connection.query(
-                    "INSERT INTO `albumes`(`nombre`, `artista`) VALUES (?, ?)",
-                    [nombre, albumesartista]
-                );
+    try {
+        const [results, fields] = await connection.query(
+            "INSERT INTO `albumes`(`nombre`, `artista`) VALUES (?, ?)",
+            [nombre, albumesartista]
+        );
 
-                res.json(results);
-            } catch (err) {
-                console.log(err);
-                res.status(500).json({ error: "Error al crear el álbum" });
-            }
+        res.json(results);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Error al crear el álbum" });
+    }
         };
 
 
