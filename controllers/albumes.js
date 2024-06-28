@@ -49,15 +49,14 @@ const createAlbum = async (req, res) => {
             "nombre": "Nombre del album",
             "artista": "Id del artista"
         }
-    */    const { nombre, albumesartista } = req.body;
+    */    const { nombre, artista } = req.body;
         
     try {
         const [results, fields] = await connection.query(
             "INSERT INTO `albumes`(`nombre`, `artista`) VALUES (?, ?)",
-            [nombre, albumesartista]
+            [nombre, artista]
         );
-
-        res.json(results);
+        res.send(results);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Error al crear el álbum" });

@@ -13,7 +13,7 @@ app.get("/", (_, res) => {
 });
 app.get("/albumes", albumes.getAlbumes);
 app.get("/albumes/:id", albumes.getAlbum);
-app.post("/CrearAlbumes", albumes.createAlbum)
+app.post("/albumes", albumes.createAlbum)
 
 /* ------------------- Rutas ------------------- */
 
